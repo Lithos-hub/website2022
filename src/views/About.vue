@@ -54,20 +54,23 @@
 import Goback from '../components/Goback.vue';</script>
 
 <style lang="scss" scoped>
+
+@media screen and (max-width: 767px) {
 .text__wrapper {
-  color: white;
   padding: 0;
   margin: 0;
-  position: fixed;
-  top: 50%;
+  position: absolute;
+  top: 58%;
   left: 50%;
-  width: 80vw;
   transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
   p {
     background: linear-gradient(120deg, rgb(255, 0, 183), #00c8ff);
     background-clip: text;
     -webkit-background-clip: text;
-    font-size: 20px;
+    font-size: 13px;
+    line-height: 22px;
     -webkit-text-fill-color: transparent;
     font-weight: 600;
   }
@@ -77,5 +80,32 @@ import Goback from '../components/Goback.vue';</script>
     -webkit-background-clip: text;
     font-size: 1.2em;
   }
+}
+}
+@media screen and (min-width: 768px) {
+  .text__wrapper {
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 90vw;
+  transform: translate(-50%, -50%);
+  p {
+    background: linear-gradient(120deg, rgb(255, 0, 183), #00c8ff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    font-size: 1em;
+    line-height: 50px;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+  }
+  strong {
+    background: linear-gradient(120deg, rgb(255, 255, 255), #00fff7);
+    background-clip: text;
+    -webkit-background-clip: text;
+    font-size: 1.2em;
+  }
+}
 }
 </style>

@@ -3,44 +3,46 @@
     <Goback />
     <h1>Portfolio</h1>
 
-    <section
+    <Options
+      :options="optionsList"
       :class="
-        showingDesigns || showingApps
+        isOnTheTop
           ? 'options__wrapper--top d-flex space-between'
           : 'options__wrapper--center d-flex space-between'
       "
-    >
-      <button
-        :class="showingDesigns ? 'mainButton active--btn' : 'mainButton'"
-        @click="showDesigns"
-      >
-        Web designs
-      </button>
-      <button
-        :class="showingApps ? 'mainButton active--btn' : 'mainButton'"
-        @click="showApps"
-      >
-        Web apps
-      </button>
-    </section>
+      @action="toggleAction"
+    />
 
-    <Carrousel :list="designs" v-if="showingDesigns" />
-    <Carrousel :list="apps" v-if="showingApps" />
+    <CarrouselPortfolio v-show="showingDesigns" :list="designs" />
+    <CarrouselPortfolio v-show="showingApps" :list="apps" />
   </div>
 </template>
 
 <script setup>
-import Goback from "../components/Goback.vue";
-
 import { ref } from "vue";
-import Carrousel from "../components/Carrousel.vue";
+
+import Goback from "../components/Goback.vue";
+import Options from "../components/Options.vue";
+import CarrouselPortfolio from "../components/CarrouselPortfolio.vue";
 
 const showingDesigns = ref(false);
 const showingApps = ref(false);
+const isOnTheTop = ref(false);
+const getImageUrl = (type, name) =>
+  new URL(`../assets/img/${type}/${name}`, import.meta.url).href;
 
-const getImageUrl = (type, name) => {
-  return new URL(`../assets/img/${type}/${name}`, import.meta.url).href;
-};
+const optionsList = ref([
+  {
+    text: "Web designs",
+    active: showingDesigns,
+    emit: "designs",
+  },
+  {
+    text: "Web apps",
+    active: showingApps,
+    emit: "apps",
+  },
+]);
 
 const designs = ref([
   {
@@ -247,82 +249,56 @@ const apps = ref([
   },
 ]);
 
-const showDesigns = () => {
-  showingDesigns.value = true;
-  showingApps.value = false;
-};
-const showApps = () => {
-  showingDesigns.value = false;
-  showingApps.value = true;
+const toggleAction = (emit) => {
+  if (emit === "designs" && !showingDesigns.value) {
+    isOnTheTop.value = true;
+    showingDesigns.value = true;
+    showingApps.value = false;
+  } else if (emit === "designs" && showingDesigns.value) {
+    isOnTheTop.value = false;
+    showingDesigns.value = false;
+    showingApps.value = false;
+  }
+  if (emit === "apps" && !showingApps.value) {
+    isOnTheTop.value = true;
+    showingDesigns.value = false;
+    showingApps.value = true;
+  } else if (emit === "apps" && showingApps.value) {
+    isOnTheTop.value = false;
+    showingDesigns.value = false;
+    showingApps.value = false;
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 @import "../scss/app.scss";
 
-.portfolio {
-  h1 {
-    position: fixed;
-    top: 3vh;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: rgb(255, 255, 255);
-    font-weight: lighter;
-    letter-spacing: 10px;
-  }
-
-  .options__wrapper--top {
-    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-    position: fixed;
-    top: 13vh;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50vw;
-    filter: drop-shadow(0px 0px 10px #6bc0c8);
-
-    button {
-      margin-inline: 5vw;
+@media screen and (max-width: 768px) {
+  .portfolio {
+    h1 {
+      position: fixed;
+      top: 0vh;
+      right: 2vw;
+      font-size: 20px;
+      color: rgb(255, 255, 255);
+      font-weight: lighter;
+      letter-spacing: 10px;
     }
   }
-  .options__wrapper--center {
-    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50vw;
-    filter: drop-shadow(0px 0px 10px #6bc0c8);
-
-    button {
-      margin-inline: 5vw;
+}
+@media screen and (min-width: 768px) {
+  .portfolio {
+    h1 {
+      position: fixed;
+      top: 2vh;
+      left: 50%;
+      font-size: 28px;
+      transform: translate(-50%, -50%);
+      color: rgb(255, 255, 255);
+      font-weight: lighter;
+      letter-spacing: 10px;
     }
-  }
-
-  .mainButton {
-    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-    border-top: 1px solid white;
-    border-bottom: 1px solid cyan;
-    border-inline: none;
-    background: transparent;
-    padding: 25px;
-    border-radius: 25px;
-    width: 250px;
-    font-size: 1.2em;
-    color: white;
-    clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
-
-    &:hover {
-      background: $mainDark;
-    }
-
-    &:active {
-      background: white;
-    }
-  }
-
-  .active--btn {
-    background: white;
-    color: $mainDark;
   }
 }
 </style>

@@ -10,6 +10,7 @@
   "dependencies": {
     "@mdi/js": "^6.6.96",
     "mdi-vue": "^3.0.13",
+    "pinia": "^2.0.14",
     "vue": "^3.2.25",
     "vue-router": "^4.0.15"
   },
