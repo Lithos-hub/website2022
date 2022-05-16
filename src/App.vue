@@ -2,7 +2,7 @@
   <div class="app__wrapper">
     <div id="cursor"></div>
     <div class="background__noise"></div>
-    <router-view class="routerView"></router-view>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -19,44 +19,41 @@ const audioFX3 = new Audio("audio/btn4.mp3");
 
 const listenMouseTorch = () => {
   let cursor = document.querySelector("#cursor");
-  if (window.innerWidth >= 768) { // => This doesn't make much sense on mobile devices
+  if (window.innerWidth >= 768) {
     window.addEventListener("mousemove", (e) => {
       cursor.style.transition = "all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1)";
       cursor.style.top = e.clientY + 5 + "px";
       cursor.style.left = e.clientX + 5 + "px";
     });
   } else {
+    // => The light cursor doesn't have so much sense on mobile devices, so we'll hidden it
     cursor.style.display = "none";
   }
 };
 
 const listenSoundsFX = (isEnable) => {
-  if (isEnable) {
-    const linksList = document.querySelectorAll("a");
-    linksList.forEach((link) => {
-      link.addEventListener("mouseenter", () => audioFX1.play());
-      link.addEventListener("mouseleave", () => {
-        audioFX1.currentTime = 0;
-        audioFX1.pause();
-      });
-    });
-    const buttonsList = document.querySelectorAll("button");
-    buttonsList.forEach((button) => {
-      button.addEventListener("mouseenter", () => audioFX2.play());
-      button.addEventListener("mouseleave", () => {
-        audioFX2.currentTime = 0;
-        audioFX2.pause();
-      });
-    });
-    const articlesList = document.querySelectorAll("article");
-    articlesList.forEach((article) => {
-      article.addEventListener("mouseenter", () => audioFX3.play());
-      article.addEventListener("mouseleave", () => {
-        audioFX3.currentTime = 0;
-        audioFX3.pause();
-      });
-    });
+  if (!isEnable) return;
+
+  const stopAudio = (audio) => {
+    audio.currentTime = 0;
+    audio.pause();
   }
+
+  const linksList = document.querySelectorAll("a");
+  linksList.forEach((link) => {
+    link.addEventListener("mouseenter", () => audioFX1.play());
+    link.addEventListener("mouseleave", () => stopAudio(audioFX1));
+  });
+  const buttonsList = document.querySelectorAll("button");
+  buttonsList.forEach((button) => {
+    button.addEventListener("mouseenter", () => audioFX2.play());
+    button.addEventListener("mouseleave", () => stopAudio(audioFX2));
+  });
+  const articlesList = document.querySelectorAll("article");
+  articlesList.forEach((article) => {
+    article.addEventListener("mouseenter", () => audioFX3.play());
+    article.addEventListener("mouseleave", () => stopAudio(audioFX3));
+  });
 };
 
 watch(

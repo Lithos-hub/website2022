@@ -26,8 +26,8 @@
     />
     <section class="index__innerWrapper">
       <section class="index__title">
-        <h2>Carlos Segura García</h2>
-        <h1>
+        <h1>Carlos Segura García</h1>
+        <h2>
           <span class="text-h1 flicker--fast">F</span>ron<span
             class="text-h1 flicker--slow"
             >t</span
@@ -35,7 +35,7 @@
             class="text-h1 flicker--fast"
             >e</span
           >r
-        </h1>
+        </h2>
         <div class="musicPlayer__wrapper">
           <button class="index__musicPlayer" @click="playMusic">
             <mdicon
@@ -46,7 +46,7 @@
           </button>
         </div>
         <p class="index__musicPlayer--tooltip">
-          {{ !isPlayingMusic ? "Click to play" : "Click to pause" }}
+          {{ !isPlayingMusic ? "Click to enable the sound" : "Click to disable the sound" }}
         </p>
       </section>
       <nav class="navbar navbar__top d-flex space-between">
@@ -78,24 +78,30 @@
         </router-link>
       </nav>
       <nav class="navbar navbar__subBottom d-flex space-around">
-        <mdicon
-          class="contact__icon"
-          name="github"
-          size="30"
-          @click="goTo('https://github.com/Lithos-hub')"
-        />
-        <mdicon
-          class="contact__icon"
-          name="gmail"
-          size="30"
-          @click="goTo('mailto:lithos.contact@gmail.com')"
-        />
-        <mdicon
-          class="contact__icon"
-          name="linkedin"
-          size="30"
-          @click="goTo('https://www.linkedin.com/in/carlos-segura-garcia/')"
-        />
+        <button>
+          <mdicon
+            class="contact__icon"
+            name="github"
+            size="20"
+            @click="goTo('https://github.com/Lithos-hub')"
+          />
+        </button>
+        <button>
+          <mdicon
+            class="contact__icon"
+            name="gmail"
+            size="20"
+            @click="goTo('mailto:lithos.contact@gmail.com')"
+          />
+        </button>
+        <button>
+          <mdicon
+            class="contact__icon"
+            name="linkedin"
+            size="20"
+            @click="goTo('https://www.linkedin.com/in/carlos-segura-garcia/')"
+          />
+        </button>
       </nav>
     </section>
     <div class="index__bottomSide"></div>
@@ -131,6 +137,22 @@ const goTo = (link) => window.open(link, "_blank");
 @import "../scss/app.scss";
 @import "../scss/variables.scss";
 
+.contact__icon {
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  color: white;
+  filter: drop-shadow(0px 0px 10px rgb(0, 123, 255));
+  padding: 7px;
+
+  &:hover {
+    background: white;
+    box-shadow: 0px 0px 2px white, 0px 0px 10px cyan,
+      0px 0px 20px rgb(234, 0, 255);
+    color: #101010;
+    filter: brightness(2);
+    border-radius: 50%;
+  }
+}
+
 .flicker--fast {
   animation: flicker 5s linear infinite;
   animation-delay: 1s;
@@ -158,9 +180,9 @@ button {
   border: none;
   background: none;
   outline: none;
+  padding: 0;
 }
 
-button,
 .index__musicPlayer {
   transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
   position: relative;
@@ -193,7 +215,7 @@ button,
   position: relative;
   margin: 0 auto;
   margin-top: 25px;
-  width: 100px;
+  width: 200px;
   height: 50px;
   background: linear-gradient(120deg, #b700ff, #00c8ff);
   filter: brightness(2);
@@ -233,12 +255,12 @@ button,
     left: 50%;
     transform: translate(-50%, -50%);
 
-    h2 {
+    h1 {
       color: rgba(255, 255, 255, 0.733);
       font-weight: lighter;
     }
 
-    h1 {
+    h2 {
       color: rgb(255, 255, 255);
       font-weight: lighter;
       text-shadow: 0px 0px 2px white, 0px 0px 10px cyan, 0px 0px 20px blue;
@@ -368,25 +390,6 @@ button,
     }
   }
 
-  .contact__icon {
-    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-    color: white;
-    filter: drop-shadow(0px 0px 10px rgb(0, 123, 255));
-    padding: 5px;
-    width: 30px;
-    height: 30px;
-
-    &:hover {
-      background: white;
-      box-shadow: 0px 0px 2px white, 0px 0px 10px cyan,
-        0px 0px 20px rgb(234, 0, 255);
-      color: #101010;
-      filter: brightness(2);
-      border-radius: 50%;
-      padding: 5px;
-    }
-  }
-
   .navbar__subBottom {
     position: fixed;
     bottom: 1vh;
@@ -407,12 +410,12 @@ button,
     left: 50%;
     transform: translate(-50%, -50%);
 
-    h2 {
+    h1 {
       color: rgba(255, 255, 255, 0.733);
       font-weight: lighter;
     }
 
-    h1 {
+    h2 {
       color: rgb(255, 255, 255);
       font-weight: lighter;
       text-shadow: 0px 0px 2px white, 0px 0px 10px cyan, 0px 0px 20px blue;
@@ -532,8 +535,6 @@ button,
     color: white;
     filter: drop-shadow(0px 0px 10px rgb(0, 123, 255));
     padding: 5px;
-    width: 30px;
-    height: 30px;
 
     &:hover {
       background: white;
