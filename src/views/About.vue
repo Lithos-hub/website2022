@@ -51,7 +51,10 @@
 </template>
 
 <script setup>
-import Goback from '../components/Goback.vue';</script>
+// COMPONENTS
+import Goback from '../components/Goback.vue';
+
+</script>
 
 <style lang="scss" scoped>
 

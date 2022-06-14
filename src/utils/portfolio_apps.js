@@ -1,0 +1,80 @@
+const getImageUrl = (type, name) =>
+  new URL(`../assets/img/${type}/${name}`, import.meta.url).href;
+
+export const myApps = [
+  {
+    isNew: false,
+    name: "Blog",
+    subtitle: "A simple misellaneous blog design",
+    link: "https://blog-mainsite.netlify.app",
+    img: getImageUrl("designs", "blog-design.jpg"),
+    tech_icons: [
+      { techname: "Vue 2", techicon: "vuejs" },
+      { techname: "HTML", techicon: "language-html5" },
+      { techname: "CSS", techicon: "language-css3" },
+      { techname: "SCSS", techicon: "sass" },
+      { techname: "JS", techicon: "language-javascript" },
+      { techname: "Vuetify", techicon: "vuetify" },
+    ],
+  },
+  {
+    isNew: false,
+    name: "IT Company",
+    subtitle: "Technology company main website",
+    link: "https://it-company-mainsite.netlify.app/",
+    img: getImageUrl("designs", "kraken-design.jpg"),
+    tech_icons: [
+      { techname: "Vue 2", techicon: "vuejs" },
+      { techname: "HTML", techicon: "language-html5" },
+      { techname: "CSS", techicon: "language-css3" },
+      { techname: "SCSS", techicon: "sass" },
+      { techname: "JS", techicon: "language-javascript" },
+      { techname: "Vuetify", techicon: "vuetify" },
+    ],
+  },
+  {
+    isNew: false,
+    name: "Travel Agency",
+    subtitle: "Travel agency main website",
+    link: "https://travel-agency-mainsite.netlify.app/",
+    img: getImageUrl("designs", "travel-design.jpg"),
+    tech_icons: [
+      { techname: "Vue 2", techicon: "vuejs" },
+      { techname: "HTML", techicon: "language-html5" },
+      { techname: "CSS", techicon: "language-css3" },
+      { techname: "SCSS", techicon: "sass" },
+      { techname: "JS", techicon: "language-javascript" },
+      { techname: "Vuetify", techicon: "vuetify" },
+    ],
+  },
+  {
+    isNew: false,
+    name: "Product",
+    subtitle: "Smartphone model main website",
+    link: "https://product-mainsite.netlify.app/",
+    img: getImageUrl("designs", "smartphone-design.jpg"),
+    tech_icons: [
+      { techname: "Vue 2", techicon: "vuejs" },
+      { techname: "HTML", techicon: "language-html5" },
+      { techname: "CSS", techicon: "language-css3" },
+      { techname: "SCSS", techicon: "sass" },
+      { techname: "JS", techicon: "language-javascript" },
+      { techname: "Vuetify", techicon: "vuetify" },
+    ],
+  },
+  {
+    isNew: false,
+    name: "NGO",
+    subtitle: "NGO main website",
+    link: "https://ngo-mainsite.netlify.app/",
+    img: getImageUrl("designs", "ngo-design.jpg"),
+    tech_icons: [
+      { techname: "Vue 2", techicon: "vuejs" },
+      { techname: "HTML", techicon: "language-html5" },
+      { techname: "CSS", techicon: "language-css3" },
+      { techname: "SCSS", techicon: "sass" },
+      { techname: "JS", techicon: "language-javascript" },
+      { techname: "Vuetify", techicon: "vuetify" },
+    ],
+  },
+];

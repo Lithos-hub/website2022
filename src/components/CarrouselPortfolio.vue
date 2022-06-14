@@ -170,36 +170,36 @@ onMounted(() => listenScrollX());
     background: transparent;
     width: 100%;
     max-width: 90vw;
-    height: 80vh;
+    height: clamp(50vh, 80vh, 75vh);
     position: fixed;
     top: 60vh;
     left: 50%;
     transform: translate(-50%, -50%);
     margin: 0;
+    padding: 0;
     overflow-x: scroll;
     border-radius: 25px 25px 0px 0px;
     gap: 1em;
   }
   .card {
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    // cursor: pointer;
+    transition: all 0.2s ease-in;
     position: relative;
     border-top: 2px solid white;
     border-bottom: 2px solid cyan;
     border-inline: 2px solid transparent;
     color: $mainDark;
-    min-width: 280px;
+    min-width: clamp(100px, 350px, 280px);
+    width: auto;
     height: auto;
-    margin-bottom: 1em;
+    margin-bottom: 25px;
     border-radius: 25px;
     padding: 25px;
-    clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
 
     &:hover {
-      clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
       border-radius: 20px;
       border-inline: 2px solid cyan;
       border-block: 2px solid white;
+      filter: drop-shadow(0px 0px 5px rgb(179, 0, 255));
 
       .card__image {
         border-radius: 0px 0px 25px 25px;
