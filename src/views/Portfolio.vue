@@ -125,6 +125,20 @@ const designs = ref([
 const apps = ref([
   {
     isNew: true,
+    name: "iCode",
+    tech_icons: [
+      { techname: "Vue 3", techicon: "vuejs" },
+      { techname: "HTML", techicon: "language-html5" },
+      { techname: "CSS", techicon: "language-css3" },
+      { techname: "SCSS", techicon: "sass" },
+      { techname: "JS", techicon: "language-javascript" },
+    ],
+    subtitle: "HTML, CSS and JavaScript code playground",
+    link: "https://icode-playground-app.netlify.app/",
+    img: getImageUrl("apps", "iCode.jpg"),
+  },
+  {
+    isNew: true,
     name: "iShop",
     tech_icons: [
       { techname: "Vue 3", techicon: "vuejs" },

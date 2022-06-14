@@ -2,7 +2,8 @@
   <section class="carrousel__wrapper">
     <article
       class="card reflections"
-      v-for="item in list"
+      v-for="(item, i) in list"
+      :key="i"
       @click="goTo(item.link)"
     >
       <h3>{{ item.name }}</h3>
@@ -10,7 +11,7 @@
       <h5>Tech stack</h5>
       <hr />
       <section class="tech__stack--wrapper">
-        <div v-for="tech in item.tech_icons">
+        <div v-for="(tech, i) in item.tech_icons" :key="i">
           <mdicon class="tech__icon" :name="tech.techicon" :size="30"></mdicon>
           <p class="tech__name">{{ tech.techname }}</p>
         </div>
@@ -70,7 +71,7 @@ onMounted(() => listenScrollX());
     transition: none;
     position: relative;
     border-top: none;
-    border-bottom: 1px solid white;;
+    border-bottom: 1px solid white;
     border-inline: none;
     color: $mainDark;
     min-width: auto;

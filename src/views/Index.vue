@@ -50,20 +50,12 @@
         </p>
       </section>
       <nav class="navbar navbar__top d-flex space-between">
-        <router-link to="/">
-          <div class="dot__wrapper">
-            <div class="navbar__dot"></div>
-            <span>Home</span>
-          </div>
-        </router-link>
         <router-link to="/about">
           <div class="dot__wrapper">
             <div class="navbar__dot"></div>
             <span>Who I am</span>
           </div>
         </router-link>
-      </nav>
-      <nav class="navbar navbar__bottom d-flex space-between">
         <router-link to="/cv">
           <div class="dot__wrapper">
             <div class="navbar__dot"></div>
@@ -505,8 +497,8 @@ button,
   }
 
   .navbar__dot {
-    height: 10px;
-    width: 10px;
+    max-height: 10px;
+    max-width: 10px;
     border-radius: 50%;
     background: white;
     box-shadow: 0px 0px 2px white, 0px 0px 10px yellow, 0px 0px 20px blue;

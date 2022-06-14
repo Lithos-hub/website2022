@@ -1,14 +1,15 @@
 <template>
   <section class="carrousel__wrapper">
-    <article class="cv__card reflections" v-for="element in list">
+    <article class="cv__card reflections" v-for="(element, i) in list" :key="i">
       <header class="cv__card--header">
         <h3>{{ element.title }}</h3>
         <h4>{{ element.subtitle }}</h4>
         <h5>{{ element.date }}</h5>
+        <h6 v-if="element.startExperience">Total: {{ calculateTotalTime(element.startExperience, element.endExperience) }}</h6>
         <hr />
       </header>
       <ul>
-        <li v-for="item in element.sublist">
+        <li v-for="(item, i) in element.sublist" :key="i">
           <div>
             <mdicon name="check" size="20" />
           </div>
@@ -41,6 +42,21 @@ const listenScrollX = () => {
     carr.scrollLeft += e.deltaY;
   }));
 };
+
+const calculateTotalTime = (startDate, endDate) => {
+  const start = new Date(startDate)
+  let today = ''
+  if (!endDate) {
+    today = new Date()
+  } else {
+    today = new Date(endDate)
+  }
+  // Get the difference between the two dates in years and months
+  const diff = new Date(today.getTime() - start.getTime())
+  const diffYears = diff.getUTCFullYear() - 1970
+  const diffMonths = diff.getUTCMonth()
+  return `${diffYears} years, ${diffMonths} months`
+}
 
 onMounted(() => {
   listenScrollX();
@@ -109,10 +125,12 @@ h4 {
 h5 {
   color: white;
 }
+h6 {
+  color: rgb(87, 87, 212);
+}
 
 ul {
   position: relative;
-  bottom: 0;
   left: 0;
   height: auto;
   list-style: none;
@@ -174,6 +192,17 @@ h5 {
   letter-spacing: 5px;
   text-transform: uppercase;
 }
+
+h6 {
+  position: absolute;
+  color: rgb(255, 171, 54);
+  top: 32%;
+  left: 50%;
+  width: 100%;
+  font-weight: lighter;
+  font-size: 15px;
+  transform: translate(-50%, -50%);
+}
 hr {
   position: absolute;
   top: 40%;
@@ -197,8 +226,8 @@ h5 {
 }
 
 ul {
-  position: absolute;
-  bottom: 0;
+  position: relative;
+  top: 10rem;
   left: 0;
   height: auto;
   list-style: none;

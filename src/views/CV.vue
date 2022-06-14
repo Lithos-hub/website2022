@@ -47,7 +47,7 @@ const educations = ref([
     title:
       "Higher Technical Certificate in Web App Development with Cloud Computing specialization (CFGS).",
     subtitle: "Centro Superior de Formación Europa Sur (Cesur)",
-    date: "2020 - Currently",
+    date: "2020 - 2022",
     sublist: [
       "Study of computer science and web development from a general point of view.",
       "Stack: Java, MySQL, Apache Tomcat, Linux, PHP, HTML, CSS, JavaScript.",
@@ -80,10 +80,22 @@ const educations = ref([
 const experience = ref([
   {
     title: "Front-end Developer (Vue)",
-    subtitle: "CGI",
-    date: "MAR. 2021 - Currently",
+    subtitle: "Cathedral Software",
+    date: "JUN. 2022 - Currently",
+    startExperience: "06-13-2022",
+    endExperience: false,
     sublist: [
-      "Front-end development with Vue.js + Vuetify.",
+      "Frontend development with Vue.js"
+    ],
+  },
+  {
+    title: "Front-end Developer (Vue)",
+    subtitle: "CGI",
+    date: "MAR. 2021 - JUN. 2022",
+    startExperience: "03-22-2021",
+    endExperience: "07-06-2022",
+    sublist: [
+      "Frontend development with Vue.js + Vuetify.",
       "Integrations and deployments.",
       "Vue (HTML, CSS/SCSS, JavaScript) + Vuetify + Google Cloud.",
       "GitFlow + Bitbucket.",
@@ -91,22 +103,24 @@ const experience = ref([
   },
   {
     title: "Front-end Developer (Vue)",
-    subtitle: "Personal projects",
+    subtitle: "Personal projects / self-learning",
     date: "OCT. 2020 - Currently",
+    startExperience: "10-01-2020",
+    endExperience: false,
     sublist: [
-      "Front-end development with Vue.",
+      "Frontend development with Vue.",
       "Apps made from scratch and developed on my own.",
       "Technologies: Vue 2, Vue 3, Vite, Pinia, Google Firebase, Webpack + JS Vanilla, APIs, Vuetify, Bootstrap...",
     ],
   },
   {
-    title: "Music composer / Producer / Sound designer",
-    subtitle: "Centro Superior de Formación Europa Sur (Cesur).",
+    title: "Music producer / composer / sound designer",
+    subtitle: "",
     date: "2015 - 2020",
     sublist: [
-      "Stock music for Songs To Your Eyes and Atomica Music Library (USA).",
+      "Stock music for music stock libraries from USA.",
       "Soundtracks and sound design for videogames and documentaries (Spain).",
-      "Guitarist and composer.",
+      "Orchestral and progressive metal music production",
     ],
   },
   {

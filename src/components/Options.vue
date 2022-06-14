@@ -2,7 +2,7 @@
   <section class="options">
     <div :class="isLargeScreen ? 'button__wrapper gridOptions' : 'button__wrapper blockOptions'">
       <button
-        v-for="option in options"
+        v-for="(option, i) in options" :key="i"
         :class="option.active ? 'mainButton active--btn' : 'mainButton'"
         @click="emit('action', option.emit)"
       >
