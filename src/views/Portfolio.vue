@@ -13,8 +13,8 @@
       @action="toggleAction"
     />
 
-    <CarrouselPortfolio v-show="showingDesigns" :list="designs" />
     <CarrouselPortfolio v-show="showingApps" :list="apps" />
+    <CarrouselPortfolio v-show="showingDesigns" :list="designs" />
   </div>
 </template>
 
@@ -35,15 +35,15 @@ const showingApps = ref(false);
 const isOnTheTop = ref(false);
 const optionsList = ref([
   {
-    text: "Web designs",
-    active: showingDesigns,
-    emit: "designs",
-  },
-  {
     text: "Web apps",
     active: showingApps,
     emit: "apps",
   },
+    {
+      text: "Web designs",
+      active: showingDesigns,
+      emit: "designs",
+    },
 ]);
 const designs = ref(myDesigns);
 const apps = ref(myApps);

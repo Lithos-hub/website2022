@@ -8,11 +8,11 @@
     >
       <h3>{{ item.name }}</h3>
       <p>{{ item.subtitle }}</p>
-      <h5>Tech stack</h5>
       <hr />
+        <h5>Tech stack</h5>
       <section class="tech__stack--wrapper">
         <div v-for="(tech, i) in item.tech_icons" :key="i">
-          <mdicon class="tech__icon" :name="tech.techicon" :size="30"></mdicon>
+          <mdicon class="tech__icon" :name="tech.techicon" :size="20"></mdicon>
           <p class="tech__name">{{ tech.techname }}</p>
         </div>
       </section>
@@ -82,10 +82,7 @@ onMounted(() => listenScrollX());
     clip-path: none;
 
     h3 {
-      position: absolute;
-      top: 3vh;
-      right: 80%;
-      transform: translate(100%, -50%);
+      margin: 0 auto;
       font-weight: lighter;
       color: white;
       width: 80%;
@@ -150,16 +147,12 @@ onMounted(() => listenScrollX());
       margin: 0 auto;
       background: $gradientTertiary;
       color: white;
-      padding: 10px;
-      border-radius: 10px;
+      padding: 5px;
+      border-radius: 7px;
     }
     .card__image {
-      position: absolute;
-      top: 10%;
-      left: 15%;
-      transform: translate(-50%, -50%);
-      width: 100px;
-      height: auto;
+      margin-top: 5rem;
+      width: 100%;
       border-radius: none;
     }
   }
@@ -213,16 +206,11 @@ onMounted(() => listenScrollX());
     p {
       color: cyan;
       text-align: center;
-      position: relative;
-      top: 2vh;
     }
 
     h5 {
-      position: absolute;
+      margin: 0 auto;
       color: white;
-      top: 18vh;
-      left: 50%;
-      transform: translate(-50%, -50%);
       text-align: center;
       width: 100%;
       background: $gradientSecondary;
@@ -231,23 +219,14 @@ onMounted(() => listenScrollX());
       -webkit-text-fill-color: transparent;
     }
 
-    hr {
-      position: absolute;
-      top: 21vh;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-    }
-
     .tech__stack--wrapper {
-      position: absolute;
-      top: 31vh;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      margin-top: 1rem;
       width: 80%;
+      margin: 0 auto;
+      margin-top: 1rem;
       height: auto;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(20px, 1fr));
       gap: 40px;
 
       div {
@@ -257,6 +236,7 @@ onMounted(() => listenScrollX());
     }
     .tech__name {
       margin: 0 auto;
+      margin-top: 1rem;
       font-size: 11px;
       filter: brightness(2);
       font-weight: bold;
@@ -269,8 +249,8 @@ onMounted(() => listenScrollX());
       margin: 0 auto;
       background: $gradientTertiary;
       color: white;
-      padding: 10px;
-      border-radius: 10px;
+      padding: 5px;
+      border-radius: 7px;
     }
     .card__image {
       position: absolute;
