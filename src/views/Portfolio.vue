@@ -10,19 +10,18 @@
           ? 'options__wrapper--top d-flex space-between'
           : 'options__wrapper--center d-flex space-between'
       "
-      @action="toggleAction"
+      @action="toggleCarrousel"
     />
 
-    <CarrouselPortfolio v-show="showingApps" :list="apps" />
-    <CarrouselPortfolio v-show="showingDesigns" :list="designs" />
+    <CarrouselPortfolio v-show="showCarrousel" :list="listToRender" />
   </div>
 </template>
 
 <script setup>
 // UTILS
 import { ref } from "vue";
-import { myApps } from '../utils/portfolio_apps';
-import { myDesigns } from '../utils/portfolio_designs';
+import { myApps } from "../utils/portfolio_apps";
+import { myDesigns } from "../utils/portfolio_designs";
 
 // COMPONENTS
 import Goback from "../components/Goback.vue";
@@ -30,45 +29,33 @@ import Options from "../components/Options.vue";
 import CarrouselPortfolio from "../components/CarrouselPortfolio.vue";
 
 // REFS
-const showingDesigns = ref(false);
-const showingApps = ref(false);
+const showCarrousel = ref(false);
+const listToRender = ref([]);
+const selectedOption = ref("");
 const isOnTheTop = ref(false);
 const optionsList = ref([
   {
     text: "Web apps",
-    active: showingApps,
+    active: selectedOption.value === "apps",
     emit: "apps",
   },
-    {
-      text: "Web designs",
-      active: showingDesigns,
-      emit: "designs",
-    },
+  {
+    text: "Web designs",
+    active: selectedOption.value === "designs",
+    emit: "designs",
+  },
 ]);
-const designs = ref(myDesigns);
-const apps = ref(myApps);
 
-// METHODS
+const toggleCarrousel = (type) => {
+  selectedOption.value = type;
+  const options = {
+    apps: () => (listToRender.value = myApps),
+    designs: () => (listToRender.value = myDesigns),
+  };
+  options[type]();
 
-const toggleAction = (emit) => {
-  if (emit === "designs" && !showingDesigns.value) {
-    isOnTheTop.value = true;
-    showingDesigns.value = true;
-    showingApps.value = false;
-  } else if (emit === "designs" && showingDesigns.value) {
-    isOnTheTop.value = false;
-    showingDesigns.value = false;
-    showingApps.value = false;
-  }
-  if (emit === "apps" && !showingApps.value) {
-    isOnTheTop.value = true;
-    showingDesigns.value = false;
-    showingApps.value = true;
-  } else if (emit === "apps" && showingApps.value) {
-    isOnTheTop.value = false;
-    showingDesigns.value = false;
-    showingApps.value = false;
-  }
+  showCarrousel.value = true;
+  isOnTheTop.value = true;
 };
 </script>
 

@@ -2,21 +2,21 @@
   <section class="carrousel__wrapper">
     <article
       class="card reflections"
-      v-for="(item, i) in list"
+      v-for="(element, i) in list"
       :key="i"
-      @click="goTo(item.link)"
+      @click="goTo(element.link)"
     >
-      <h3>{{ item.name }}</h3>
-      <p>{{ item.subtitle }}</p>
+      <h3>{{ element.name }}</h3>
+      <p>{{ element.subtitle }}</p>
       <hr />
-        <h5>Tech stack</h5>
+      <h5>Tech stack</h5>
       <section class="tech__stack--wrapper">
-        <div v-for="(tech, i) in item.tech_icons" :key="i">
+        <div v-for="(tech, i) in element.tech_icons" :key="i">
           <mdicon class="tech__icon" :name="tech.techicon" :size="20"></mdicon>
           <p class="tech__name">{{ tech.techname }}</p>
         </div>
       </section>
-      <img class="card__image" :src="item.img" :alt="item.name" />
+      <img class="card__image" :src="element.img" :alt="element.name" />
     </article>
   </section>
 </template>
@@ -30,8 +30,6 @@ const props = defineProps({
     default: () => [],
   },
 });
-
-const { list } = props;
 
 const goTo = (link) => window.open(link, "_blank");
 
