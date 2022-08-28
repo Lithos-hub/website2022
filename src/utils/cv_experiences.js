@@ -6,7 +6,9 @@ export const myExperiences = [
     startExperience: "06-13-2022",
     endExperience: false,
     sublist: [
-      "Frontend development with Vue.js"
+      "Frontend development with Vue, TypeScript + Tailwind CSS, Vuetify, Microsoft Azure.",
+      "Integrations and deployments.",
+      "Scrumban methodology & GitFlow",
     ],
   },
   {
@@ -18,7 +20,7 @@ export const myExperiences = [
     sublist: [
       "Frontend development with Vue.js + Vuetify.",
       "Integrations and deployments.",
-      "Vue (HTML, CSS/SCSS, JavaScript) + Vuetify + Google Cloud.",
+      "Vue + Vuetify + Google Cloud.",
       "GitFlow + Bitbucket.",
     ],
   },

@@ -12,7 +12,11 @@
       @action="toggleCarrousel"
     />
 
-    <CarrouselCV v-show="showCarrousel" :list="listToRender" />
+    <CarrouselCV
+      v-show="showCarrousel"
+      :list="listToRender"
+      :is-compact="selectedOption === 'courses'"
+    />
   </div>
 </template>
 

@@ -37,7 +37,7 @@ const listenSoundsFX = (isEnable) => {
   const stopAudio = (audio) => {
     audio.currentTime = 0;
     audio.pause();
-  }
+  };
 
   const linksList = document.querySelectorAll("a");
   linksList.forEach((link) => {
@@ -102,10 +102,10 @@ onMounted(() => listenMouseTorch());
   text-align: center;
   color: $mainDark;
   background: radial-gradient(#361443, #041317);
-  background-size: 0% 0%;
   margin: 0 auto;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  background-size: cover;
   box-shadow: inset 0px 0px 100px #1b021e, inset 0px 0px 50px black;
   animation: flash 1s cubic-bezier(0.165, 0.84, 0.44, 1),
     gradientMotion 10s cubic-bezier(0.165, 0.84, 0.44, 1) infinite
@@ -131,7 +131,7 @@ onMounted(() => listenMouseTorch());
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   animation: backgroundMotion 1s infinite linear alternate-reverse;
 }
 
