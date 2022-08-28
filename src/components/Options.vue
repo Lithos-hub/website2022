@@ -1,8 +1,15 @@
 <template>
   <section class="options">
-    <div :class="isLargeScreen ? 'button__wrapper gridOptions' : 'button__wrapper blockOptions'">
+    <div
+      :class="
+        isLargeScreen
+          ? 'button__wrapper gridOptions'
+          : 'button__wrapper blockOptions'
+      "
+    >
       <button
-        v-for="(option, i) in options" :key="i"
+        v-for="(option, i) in options"
+        :key="i"
         :class="option.active ? 'mainButton active--btn' : 'mainButton'"
         @click="emit('action', option.emit)"
       >
@@ -13,7 +20,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed } from "vue";
 
 const props = defineProps({
   options: {
@@ -38,9 +45,9 @@ const emit = defineEmits(["action"]);
 }
 
 .button__wrapper {
-    filter: drop-shadow(0px 0px 50px rgb(255, 0, 208));
-    margin: 0 auto;
-    width: 100%;
+  filter: drop-shadow(0px 0px 50px rgb(255, 0, 208));
+  margin: 0 auto;
+  width: 100%;
 }
 
 .gridOptions {
@@ -60,56 +67,56 @@ const emit = defineEmits(["action"]);
   .options {
     margin-top: 2vh;
   }
-.mainButton {
-  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-  border-top: 1px solid white;
-  border-bottom: 1px solid cyan;
-  border-inline: none;
-  background: transparent;
-  padding: 15px;
-  border-radius: 18px;
-  width: 120px;
-  height: auto;
-  font-size: 12px;
-  color: white;
-  clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
-
-  &:hover {
-    background: $mainDark;
+  .mainButton {
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    border-top: 1px solid white;
+    border-bottom: 1px solid cyan;
+    border-inline: none;
+    background: transparent;
+    padding: 15px;
+    border-radius: 18px;
+    min-width: 200px;
+    height: auto;
+    font-size: 12px;
     color: white;
-  }
+    clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
 
-  &:active {
-    background: white;
+    &:hover {
+      background: $mainDark;
+      color: white;
+    }
+
+    &:active {
+      background: white;
+    }
   }
-}
 }
 @media screen and (min-width: 768px) {
-    .options {
+  .options {
     margin-top: 0;
   }
-.mainButton {
-  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-  border-top: 1px solid white;
-  border-bottom: 1px solid cyan;
-  border-inline: none;
-  background: transparent;
-  padding: 25px;
-  border-radius: 25px;
-  width: 250px;
-  height: auto;
-  font-size: 1.2em;
-  color: white;
-  clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
-
-  &:hover {
-    background: $mainDark;
+  .mainButton {
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    border-top: 1px solid white;
+    border-bottom: 1px solid cyan;
+    border-inline: none;
+    background: transparent;
+    padding: 25px;
+    border-radius: 25px;
+    min-width: 300px;
+    height: auto;
+    font-size: 1.2em;
     color: white;
-  }
+    clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
 
-  &:active {
-    background: white;
+    &:hover {
+      background: $mainDark;
+      color: white;
+    }
+
+    &:active {
+      background: white;
+    }
   }
-}
 }
 </style>

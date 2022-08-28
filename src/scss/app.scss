@@ -73,13 +73,13 @@ hr {
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: $mainDark;
-    border-radius: 25px;
+  background: $mainDark;
+  border-radius: 25px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    border-radius: 25px;
+  border-radius: 25px;
   background: white;
   box-shadow: 0px 0px 2px white, 0px 0px 10px cyan, 0px 0px 20px blue;
 }
@@ -89,7 +89,7 @@ hr {
 .options__wrapper--top {
   transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   position: fixed;
-  top: 13vh;
+  top: 200px;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 50%;

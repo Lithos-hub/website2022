@@ -9,20 +9,19 @@
           ? 'options__wrapper--top d-flex space-between'
           : 'options__wrapper--center d-flex space-between'
       "
-      @action="toggleAction"
+      @action="toggleCarrousel"
     />
 
-    <CarrouselCV v-show="showingEducation" :list="educations" />
-    <CarrouselCV v-show="showingExperience" :list="experience" />
-
+    <CarrouselCV v-show="showCarrousel" :list="listToRender" />
   </div>
 </template>
 
 <script setup>
 // UTILS
 import { ref } from "vue";
-import { myEducations } from '../utils/cv_educations';
-import { myExperiences } from '../utils/cv_experiences';
+import { myEducations } from "../utils/cv_educations";
+import { myExperiences } from "../utils/cv_experiences";
+import { myCourses } from "../utils/cv_courses";
 
 // COMPONENTS
 import Options from "../components/Options.vue";
@@ -30,45 +29,40 @@ import Goback from "../components/Goback.vue";
 import CarrouselCV from "../components/CarrouselCV.vue";
 
 // REFS
-const showingEducation = ref(false);
-const showingExperience = ref(false);
+const showCarrousel = ref(false);
+const listToRender = ref([]);
+const selectedOption = ref("");
 const isOnTheTop = ref(false);
 const optionsList = ref([
   {
     text: "Education",
-    active: showingEducation,
+    active: selectedOption.value === "education",
     emit: "education",
   },
   {
+    text: "Additional courses",
+    active: selectedOption.value === "courses",
+    emit: "courses",
+  },
+  {
     text: "Experience",
-    active: showingExperience,
+    active: selectedOption.value === "experience",
     emit: "experience",
   },
 ]);
 
-const educations = ref(myEducations);
-const experience = ref(myExperiences);
-
 // METHODS
-const toggleAction = (emit) => {
-  if (emit === "education" && !showingEducation.value) {
-    isOnTheTop.value = true;
-    showingEducation.value = true;
-    showingExperience.value = false;
-  } else if (emit === "education" && showingEducation.value) {
-    isOnTheTop.value = false;
-    showingEducation.value = false;
-    showingExperience.value = false;
-  }
-  if (emit === "experience" && !showingExperience.value) {
-    isOnTheTop.value = true;
-    showingEducation.value = false;
-    showingExperience.value = true;
-  } else if (emit === "experience" && showingExperience.value) {
-    isOnTheTop.value = false;
-    showingEducation.value = false;
-    showingExperience.value = false;
-  }
+const toggleCarrousel = (type) => {
+  selectedOption.value = type;
+  const options = {
+    education: () => (listToRender.value = myEducations),
+    courses: () => (listToRender.value = myCourses),
+    experience: () => (listToRender.value = myExperiences),
+  };
+  options[type]();
+
+  showCarrousel.value = true;
+  isOnTheTop.value = true;
 };
 </script>
 
@@ -93,7 +87,7 @@ const toggleAction = (emit) => {
   .cv {
     h1 {
       position: fixed;
-      top: 10vh;
+      top: 5vh;
       left: 50%;
       font-size: 28px;
       transform: translate(-50%, -50%);
