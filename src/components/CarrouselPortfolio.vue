@@ -16,7 +16,9 @@
           <p class="tech__name">{{ tech.techname }}</p>
         </div>
       </section>
-      <img class="card__image" :src="element.img" :alt="element.name" />
+      <div class="card__image--wrapper">
+        <img class="card__image" :src="element.img" :alt="element.name" />
+      </div>
     </article>
   </section>
 </template>
@@ -88,7 +90,7 @@ onMounted(() => listenScrollX());
     }
 
     p {
-      margin-top: 5em;
+      margin-block: 2em;
       color: cyan;
       text-align: center;
       position: relative;
@@ -108,10 +110,6 @@ onMounted(() => listenScrollX());
     }
 
     hr {
-      position: relative;
-      top: 0;
-      left: 0;
-      transform: none;
       width: 100%;
     }
 
@@ -123,7 +121,7 @@ onMounted(() => listenScrollX());
       width: 100%;
       height: 100%;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
       gap: 80px;
 
       div {
@@ -151,7 +149,7 @@ onMounted(() => listenScrollX());
     .card__image {
       margin-top: 5rem;
       width: 100%;
-      border-radius: none;
+      border-radius: 20px;
     }
   }
 }
@@ -179,9 +177,9 @@ onMounted(() => listenScrollX());
     border-bottom: 2px solid cyan;
     border-inline: 2px solid transparent;
     color: $mainDark;
-    min-width: clamp(100px, 350px, 280px);
+    min-width: clamp(100px, 500px, 280px);
     width: auto;
-    height: auto;
+
     margin-bottom: 25px;
     border-radius: 25px;
     padding: 25px;
@@ -218,10 +216,9 @@ onMounted(() => listenScrollX());
     }
 
     .tech__stack--wrapper {
-      margin-top: 1rem;
       width: 80%;
       margin: 0 auto;
-      margin-top: 1rem;
+      margin-top: 3rem;
       height: auto;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(20px, 1fr));
@@ -250,13 +247,17 @@ onMounted(() => listenScrollX());
       padding: 5px;
       border-radius: 7px;
     }
-    .card__image {
+    .card__image--wrapper {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: auto;
-      border-radius: 0px 0px 25px 25px;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .card__image {
+      border-radius: 25px;
+      margin-top: 50px;
+      height: clamp(100px, 200px, 280px);
+      width: clamp(100px, 200px, 280px);
     }
   }
 }
