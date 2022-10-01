@@ -191,7 +191,7 @@ onMounted(() => listenScrollX());
       filter: drop-shadow(0px 0px 5px rgb(179, 0, 255));
 
       .card__image {
-        border-radius: 0px 0px 25px 25px;
+        filter: brightness(1.5);
       }
     }
 
@@ -254,6 +254,8 @@ onMounted(() => listenScrollX());
       transform: translateX(-50%);
     }
     .card__image {
+      transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
       border-radius: 25px;
       margin-top: 50px;
       height: clamp(100px, 200px, 280px);
