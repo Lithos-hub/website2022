@@ -82,7 +82,9 @@ const calculateTotalTime = (startDate, endDate) => {
   const diff = new Date(today.getTime() - start.getTime());
   const diffYears = diff.getUTCFullYear() - 1970;
   const diffMonths = diff.getUTCMonth();
-  return `${diffYears} years, ${diffMonths} months`;
+  return `${diffYears} ${diffYears > 1 ? "years" : "year"}, ${diffMonths} ${
+    diffMonths > 1 ? "months" : "month"
+  }`;
 };
 
 onMounted(() => {
