@@ -1,8 +1,12 @@
 <template>
   <div class="app__wrapper">
     <div id="cursor"></div>
-    <div class="background__noise"></div>
     <router-view></router-view>
+    <div id="bg-blur">
+      <div class="fixed object-none bg-1" />
+      <div class="fixed object-none bg-2" />
+      <div class="fixed object-none bg-3" />
+    </div>
   </div>
 </template>
 
@@ -107,49 +111,23 @@ onMounted(() => listenMouseTorch());
   height: 100vh;
   background-size: cover;
   box-shadow: inset 0px 0px 100px #1b021e, inset 0px 0px 50px black;
-  animation: flash 1s cubic-bezier(0.165, 0.84, 0.44, 1),
-    gradientMotion 10s cubic-bezier(0.165, 0.84, 0.44, 1) infinite
-      alternate-reverse;
+  animation: flash 1s cubic-bezier(0.165, 0.84, 0.44, 1) alternate;
   mix-blend-mode: screen;
 
   &:after {
     content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    box-shadow: inset 0px 0px 100px #1b021e, inset 0px 0px 50px black;
-    mix-blend-mode: color-dodge;
-    z-index: -1;
-    animation: flash 1s cubic-bezier(0.165, 0.84, 0.44, 1);
-  }
-}
-.background__noise {
-  background-image: url("./assets/img/noise.png");
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  animation: backgroundMotion 1s infinite linear alternate-reverse;
-}
-
-@keyframes backgroundMotion {
-  0% {
-    background-position: 0 0;
-  }
-  25% {
-    background-position: 100% 0;
-  }
-  50% {
-    background-position: 0 100%;
-  }
-  75% {
-    background-position: 100% 100%;
-  }
-  100% {
-    background-position: 0 0;
+    position: fixed;
+    inset: 0;
+    top: 25%;
+    left: 25%;
+    width: 100vw;
+    aspect-ratio: 1/1;
+    box-shadow: inset 30px -25px 50px #00c8ff, inset -30px 25px 50px #b700ff;
+    mix-blend-mode: lighten;
+    border-radius: 100%;
+    z-index: -2;
+    filter: blur(1rem);
+    animation: rotate 15s linear infinite;
   }
 }
 
@@ -187,12 +165,150 @@ onMounted(() => listenMouseTorch());
   }
 }
 
-@keyframes gradientMotion {
+* >>> body :not(#bg-blur) {
+  z-index: 1;
+}
+
+#bg-blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  filter: blur(12rem);
+  z-index: -1;
+}
+
+.bg-1 {
+  background: radial-gradient(#0edfd4, transparent);
+  animation: motion1 12s ease-out infinite;
+  border-radius: 50%;
+  mix-blend-mode: exclusion;
+  z-index: -1;
+  opacity: 0.25;
+}
+.bg-2 {
+  background: radial-gradient(#df1515, transparent);
+  animation: motion2 15s ease-in infinite alternate;
+  border-radius: 50%;
+  mix-blend-mode: color-dodge;
+  z-index: -1;
+  opacity: 0.25;
+}
+.bg-3 {
+  background: radial-gradient(rgb(225, 0, 255), transparent);
+  animation: motion3 12s ease infinite alternate;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  z-index: -1;
+  opacity: 0.25;
+}
+
+@keyframes motion1 {
   0% {
-    background-size: 100% 100%;
+    opacity: 0.25;
+    transform: translate(0%, 0%);
+    width: 100%;
+    height: 100%;
+  }
+  25% {
+    opacity: 0.25;
+    transform: translate(-25%, 25%);
+    width: 80%;
+    height: 80%;
+  }
+  50% {
+    opacity: 0.4;
+    transform: translate(0%, 50%);
+    width: 75%;
+    height: 75%;
+  }
+  75% {
+    opacity: 0.5;
+    transform: translate(25%, 25%);
+    width: 80%;
+    height: 80%;
   }
   100% {
-    background-size: 300% 200%;
+    opacity: 0.25;
+    transform: translate(0%, 0%);
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@keyframes motion2 {
+  0% {
+    opacity: 0.25;
+    transform: translate(0%, 80%);
+    width: 80%;
+    height: 90%;
+  }
+  25% {
+    opacity: 0.25;
+    transform: translate(-20%, 60%);
+    width: 70%;
+    height: 70%;
+  }
+  50% {
+    opacity: 0.4;
+    transform: translate(0%, 40%);
+    width: 80%;
+    height: 80%;
+  }
+  75% {
+    opacity: 0.5;
+    transform: translate(25%, 80%);
+    width: 60%;
+    height: 60%;
+  }
+  100% {
+    opacity: 0.25;
+    transform: translate(0%, 80%);
+    width: 80%;
+    height: 90%;
+  }
+}
+
+@keyframes motion3 {
+  0% {
+    opacity: 0.25;
+    transform: translate(50%, 10%);
+    width: 30%;
+    height: 30%;
+  }
+  25% {
+    opacity: 0.25;
+    transform: translate(70%, 0%);
+    width: 50%;
+    height: 50%;
+  }
+  50% {
+    opacity: 0.4;
+    transform: translate(80%, -10%);
+    width: 30%;
+    height: 30%;
+  }
+  75% {
+    opacity: 0.5;
+    transform: translate(70%, 0%);
+    width: 50%;
+    height: 50%;
+  }
+  100% {
+    opacity: 0.25;
+    transform: translate(50%, 0%);
+    width: 70%;
+    height: 70%;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg) translate(0%, 0%);
+  }
+  to {
+    transform: rotate(360deg) translate(0%, 0%);
   }
 }
 </style>
