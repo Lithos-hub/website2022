@@ -117,8 +117,7 @@ onMounted(() => listenMouseTorch());
   &:after {
     content: "";
     position: fixed;
-    inset: 0;
-    top: 25%;
+    bottom: -25vw;
     left: 25%;
     width: 100vw;
     aspect-ratio: 1/1;
@@ -128,6 +127,16 @@ onMounted(() => listenMouseTorch());
     z-index: -2;
     filter: blur(1rem);
     animation: rotate 15s linear infinite;
+  }
+}
+
+@media (max-width: 1000px) {
+  #app {
+    &:after {
+      top: 25%;
+      left: 0%;
+      width: 100vw;
+    }
   }
 }
 
