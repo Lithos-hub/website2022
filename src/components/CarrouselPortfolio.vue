@@ -127,8 +127,8 @@ onMounted(() => listenScrollX());
       width: 100%;
       height: 100%;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
-      gap: 80px;
+      grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+      gap: 40px;
 
       div {
         margin-bottom: 1em;
