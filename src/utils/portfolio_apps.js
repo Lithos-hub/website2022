@@ -17,7 +17,7 @@ export const myApps = [
       { techname: "Mongo DB", techicon: "database" },
     ],
     subtitle: "Social Network about movies",
-    link: "https://imovies-v2.netlify.app/",
+    link: "https://main--imovies-v2.netlify.app",
     img: getImageUrl("apps", "iMovies-v2.jpg"),
   },
   {
